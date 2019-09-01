@@ -1,4 +1,5 @@
 //! uri operations
+use std::prelude::v1::*;
 use crate::error::{Error, ParseErr};
 use std::{
     fmt,
