@@ -9,26 +9,35 @@ readme = "README.md"
 categories = ["web-programming::http-client", "network-programming"]
 keywords = ["http", "client", "request"]
 edition = "2018"
+exclude = [ "sgx/*", ]
 
 [dependencies]
-unicase = "^2.6"
+unicase = { git = "https://github.com/mesalock-linux/unicase-sgx" }
+sgx_tstd = { rev = "v1.1.3", git = "https://github.com/apache/teaclave-sgx-sdk.git", optional = true ,features = ["net", "untrusted_time"]}
 
 [features]
-default = ["native-tls"]
+default = ["rust-tls", "mesalock_sgx"]
 rust-tls = ["rustls", "webpki", "webpki-roots"]
+mesalock_sgx = ["sgx_tstd"]
 
-[dependencies.native-tls]
-version = "^0.2"
-optional = true
+#[dependencies.native-tls]
+#version = "^0.2"
+#optional = true
 
 [dependencies.rustls]
 version = "^0.19"
+git = "https://github.com/mesalock-linux/rustls"
+branch = "mesalock_sgx"
 optional = true
 
 [dependencies.webpki]
 version = "^0.21"
+git = "https://github.com/mesalock-linux/webpki"
+branch = "mesalock_sgx"
 optional = true
 
 [dependencies.webpki-roots]
 version = "^0.21"
+git = "https://github.com/mesalock-linux/webpki-roots"
+branch = "mesalock_sgx"
 optional = true

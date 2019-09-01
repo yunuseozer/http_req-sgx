@@ -4,6 +4,7 @@
 //! [1]: https://golang.google.cn/src/net/http/internal/chunked.go
 //!
 
+use std::prelude::v1::*;
 use std::io::{self, BufRead, BufReader, Error, ErrorKind, Read};
 
 const MAX_LINE_LENGTH: usize = 4096;
