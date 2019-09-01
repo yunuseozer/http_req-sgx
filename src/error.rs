@@ -13,6 +13,7 @@ pub enum ParseErr {
 }
 
 impl fmt::Display for ParseErr {
+    #[allow(deprecated)]
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "ParseErr: {}", self.description())
     }
@@ -54,12 +55,14 @@ pub enum Error {
 }
 
 impl fmt::Display for Error {
+    #[allow(deprecated)]
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "Error: {}", self.description())
     }
 }
 
 impl StdErr for Error {
+    #[allow(deprecated)]
     fn description(&self) -> &str {
         use self::Error::*;
 
