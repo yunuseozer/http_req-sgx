@@ -1,4 +1,5 @@
 //! parsing server response
+use std::prelude::v1::*;
 use crate::{
     error::{Error, ParseErr},
     uri::Uri,

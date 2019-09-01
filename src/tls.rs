@@ -1,8 +1,9 @@
 //!secure connection over TLS
 
+use std::prelude::v1::*;
 use crate::error::Error as HttpError;
 use std::{
-    fs::File,
+    untrusted::fs::File,
     io::{self, BufReader},
     path::Path,
 };
@@ -13,8 +14,8 @@ use std::io::prelude::*;
 #[cfg(feature = "rust-tls")]
 use crate::error::ParseErr;
 
-#[cfg(not(any(feature = "native-tls", feature = "rust-tls")))]
-compile_error!("one of the `native-tls` or `rust-tls` features must be enabled");
+//#[cfg(not(any(feature = "native-tls", feature = "rust-tls")))]
+//compile_error!("one of the `native-tls` or `rust-tls` features must be enabled");
 
 ///wrapper around TLS Stream,
 ///depends on selected TLS library

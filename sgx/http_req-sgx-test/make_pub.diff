@@ -1,0 +1,73 @@
+diff --git a/src/request.rs b/src/request.rs
+index 93e6e9d..1f4944d 100644
+--- a/src/request.rs
++++ b/src/request.rs
+@@ -125,11 +125,11 @@ impl fmt::Display for HttpVersion {
+ ///```
+ #[derive(Clone, Debug, PartialEq)]
+ pub struct RequestBuilder<'a> {
+-    uri: &'a Uri,
+-    method: Method,
+-    version: HttpVersion,
+-    headers: Headers,
+-    body: Option<&'a [u8]>,
++    pub uri: &'a Uri,
++    pub method: Method,
++    pub version: HttpVersion,
++    pub headers: Headers,
++    pub body: Option<&'a [u8]>,
+ }
+ 
+ impl<'a> RequestBuilder<'a> {
+@@ -439,11 +439,11 @@ impl<'a> RequestBuilder<'a> {
+ ///
+ #[derive(Clone, Debug, PartialEq)]
+ pub struct Request<'a> {
+-    inner: RequestBuilder<'a>,
+-    connect_timeout: Option<Duration>,
+-    read_timeout: Option<Duration>,
+-    write_timeout: Option<Duration>,
+-    root_cert_file_pem: Option<&'a Path>,
++    pub inner: RequestBuilder<'a>,
++    pub connect_timeout: Option<Duration>,
++    pub read_timeout: Option<Duration>,
++    pub write_timeout: Option<Duration>,
++    pub root_cert_file_pem: Option<&'a Path>,
+ }
+ 
+ impl<'a> Request<'a> {
+diff --git a/src/response.rs b/src/response.rs
+index 4565bf4..fe1bf55 100644
+--- a/src/response.rs
++++ b/src/response.rs
+@@ -185,9 +185,9 @@ impl Response {
+ ///Status of HTTP response
+ #[derive(PartialEq, Debug, Clone)]
+ pub struct Status {
+-    version: String,
+-    code: StatusCode,
+-    reason: String,
++    pub version: String,
++    pub code: StatusCode,
++    pub reason: String,
+ }
+ 
+ impl<T, U, V> From<(T, U, V)> for Status
+@@ -233,7 +233,7 @@ impl str::FromStr for Status {
+ ///assert_eq!(headers.get("Connection"), Some(&"Close".to_string()))
+ ///```
+ #[derive(Debug, PartialEq, Clone, Default)]
+-pub struct Headers(HashMap<Ascii<String>, String>);
++pub struct Headers(pub HashMap<Ascii<String>, String>);
+ 
+ impl Headers {
+     ///Creates an empty `Headers`.
+@@ -396,7 +396,7 @@ impl fmt::Display for Headers {
+ ///assert!(code.is_success())
+ ///```
+ #[derive(Debug, PartialEq, Clone, Copy)]
+-pub struct StatusCode(u16);
++pub struct StatusCode(pub u16);
+ 
+ impl StatusCode {
+     ///Creates new StatusCode from `u16` value.
