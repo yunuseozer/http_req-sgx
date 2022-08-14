@@ -146,7 +146,7 @@ impl Config {
 
         let session = ClientSession::new(
             &self.client_config,
-            webpki::DNSNameRef::try_from_ascii_str(hostname.as_ref())
+            webpki::name::DNSNameRef::try_from_ascii_str(hostname.as_ref())
                 .map_err(|_| HttpError::Tls)?,
         );
         let stream = StreamOwned::new(session, stream);
