@@ -25,21 +25,18 @@ mesalock_sgx = ["sgx_tstd"]
 #optional = true
 
 [dependencies.rustls]
-version = "^0.19"
 git = "https://github.com/yunuseozer/rustls"
-branch = "mesalock_sgx"
+tag = "sgx_1.1.4"
 optional = true
 
 [dependencies.webpki]
-version = "^0.21"
 git = "https://github.com/yunuseozer/webpki"
-branch = "mesalock_sgx"
+tag = "sgx_1.1.4"
 optional = true
 
 [dependencies.webpki-roots]
-version = "^0.21"
 git = "https://github.com/yunuseozer/webpki-roots"
-branch = "mesalock_sgx"
+tag = "sgx_1.1.4"
 optional = true
 
 [badges]
